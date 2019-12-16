@@ -3,4 +3,5 @@
     <string name="title_activity_settings">Configuracion</string>
     <string name="setting_label" translatable="false">Settings</string>
     <string name="title_activity_details">Detalle Posicion</string>
+    <string name="title_activity_dialog">Activity no FullScreen</string>
 </resources>
