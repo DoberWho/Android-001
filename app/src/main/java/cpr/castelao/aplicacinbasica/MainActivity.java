@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,7 +30,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void initButtons() {
+        Button btnSettings = findViewById(R.id.act_main_setting_btn);
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(ctx, SettingsActivity.class);
+               /*
+                EditText editText = (EditText) findViewById(R.id.editText);
+                String message = editText.getText().toString();
+                intent.putExtra(EXTRA_MESSAGE, message);
+                */
+                startActivity(intent);
+
+            }
+        });
     }
 
     void initData() {
