@@ -20,6 +20,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
     private static final int layout = R.layout.adapter_list_item;
     List<String> items = new ArrayList<String>();
 
+    public ListAdapter(ArrayList<String> words) {
+        this.items = words;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
