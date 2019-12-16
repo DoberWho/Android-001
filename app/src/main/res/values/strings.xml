@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Aplicación Basica</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Configuracion</string>
     <string name="setting_label" translatable="false">Settings</string>
+    <string name="title_activity_details">Detalle Posicion</string>
 </resources>
