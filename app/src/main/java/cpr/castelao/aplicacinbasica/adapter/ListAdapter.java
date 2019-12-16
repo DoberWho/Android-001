@@ -1,6 +1,7 @@
 package cpr.castelao.aplicacinbasica.adapter;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,14 +15,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cpr.castelao.aplicacinbasica.R;
+import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
 
     private static final int layout = R.layout.adapter_list_item;
+    private final ListAdapterListener listener;
     List<String> items = new ArrayList<String>();
 
-    public ListAdapter(ArrayList<String> words) {
+    public ListAdapter(ArrayList<String> words, ListAdapterListener listener) {
         this.items = words;
+        this.listener = listener;
     }
 
     @NonNull
@@ -35,10 +39,19 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        String item = items.get(position);
+        final String item = items.get(position);
 
         holder.txtTitle.setText(item);
         holder.txtSubtitle.setText("POS: "+position);
+
+        holder.linRoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.click(item);
+                }
+            }
+        });
 
     }
 

@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import cpr.castelao.aplicacinbasica.adapter.ListAdapter;
+import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,7 +50,17 @@ public class MainActivity extends AppCompatActivity {
             items.add("Elemento " + idx);
         }
 
-        ListAdapter adapter = new ListAdapter(items);
+        ListAdapterListener listener = new ListAdapterListener() {
+            @Override
+            public void click(String item) {
+
+                Intent intent = new Intent(ctx, DetailsActivity.class);
+                intent.putExtra(DetailsActivity.ITEM_CLICKADO, item);
+                startActivity(intent);
+            }
+        };
+
+        ListAdapter adapter = new ListAdapter(items, listener);
 
         RecyclerView lista = findViewById(R.id.act_main_lista_rec);
 
