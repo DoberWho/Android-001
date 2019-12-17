@@ -21,7 +21,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
     private static final int layout = R.layout.adapter_list_item;
     private final ListAdapterListener listener;
-    List<String> items = new ArrayList<String>();
+    private List<String> items = new ArrayList<String>();
 
     public ListAdapter(ArrayList<String> words, ListAdapterListener listener) {
         this.items = words;
