@@ -11,10 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".DownloadIntentService"
+            android:exported="false"></service>
+        <service
+            android:name=".DownloadService"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
             android:name=".DialogActivity"
             android:label="@string/title_activity_dialog"
-            android:theme="@style/Theme.AppCompat.Dialog"></activity>
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
             android:name=".DetailsActivity"
             android:label="@string/title_activity_details"

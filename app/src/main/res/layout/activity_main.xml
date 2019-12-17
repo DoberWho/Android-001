@@ -26,11 +26,11 @@
             android:text="@string/setting_label" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/act_main_notif_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="BTN012" />
+            android:text="@string/notification_label" />
 
         <Button
             android:id="@+id/button10"

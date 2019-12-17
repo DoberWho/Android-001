@@ -42,6 +42,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        Button btnNotif = findViewById(R.id.act_main_notif_btn);
+        btnNotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String item = "Elemento X";
+
+                NotifController ctrl = NotifController.init(ctx);
+                ctrl.showNotif(DetailsActivity.class, item);
+            }
+        });
     }
 
     void initData() {
