@@ -39,12 +39,19 @@ public class NotifController {
         intent.putExtra(DetailsActivity.ITEM_CLICKADO, item);
         PendingIntent pIntent = PendingIntent.getActivity(ctx, REQUEST_CODE, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
+        String msg = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+        msg = msg + msg;
+        msg = msg + msg;
+        msg = msg + msg;
+        msg = msg + msg;
+
         Notification n  = new Notification.Builder(ctx)
                 .setContentTitle("New mail from " + "test@gmail.com")
-                .setContentText("Subject")
+                .setContentText(msg)
                 .setSmallIcon(icon)
                 .setContentIntent(pIntent)
                 .setAutoCancel(true)
+                .setStyle(new Notification.BigTextStyle().bigText(msg))
                 //.addAction(R.drawable.icon, "Call", pIntent)
                 //.addAction(R.drawable.icon, "More", pIntent)
                 //.addAction(R.drawable.icon, "And more", pIntent)
