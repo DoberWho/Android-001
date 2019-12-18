@@ -5,12 +5,16 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Icon;
 import android.os.Build;
 
 public class NotifController {
 
     private int REQUEST_CODE = 1234;
     private int icon = R.mipmap.ic_launcher;
+    private Bitmap iconIcon;
     private String nameApp;
     
     private static NotifController instance = new NotifController();
@@ -22,6 +26,7 @@ public class NotifController {
     public static NotifController init(Context ctx){
         instance.ctx = ctx;
         instance.time = System.currentTimeMillis();
+        instance.iconIcon = BitmapFactory.decodeResource(ctx.getResources(), instance.icon);
         instance.initData();
         return instance;
     }
@@ -49,6 +54,7 @@ public class NotifController {
                 .setContentTitle("New mail from " + "test@gmail.com")
                 .setContentText(msg)
                 .setSmallIcon(icon)
+                .setLargeIcon(iconIcon)
                 .setContentIntent(pIntent)
                 .setAutoCancel(true)
                 .setStyle(new Notification.BigTextStyle().bigText(msg))
