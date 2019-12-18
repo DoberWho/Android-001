@@ -15,6 +15,8 @@ import android.provider.MediaStore;
 
 import java.io.IOException;
 
+import cpr.castelao.aplicacinbasica.common.Tools;
+
 public class NotifController {
 
     private static final String url = "https://ep01.epimg.net/elpais/imagenes/2019/08/23/icon/1566563189_400624_1566563342_noticia_normal.jpg";
@@ -32,8 +34,7 @@ public class NotifController {
     public static NotifController init(Context ctx){
         instance.ctx = ctx;
         instance.time = System.currentTimeMillis();
-        instance.iconIcon = BitmapFactory.decodeResource(ctx.getResources(), instance.icon);
-
+        instance.iconIcon = Tools.init(ctx).getBitmapFromResID(instance.icon);
 
         instance.initData();
         return instance;

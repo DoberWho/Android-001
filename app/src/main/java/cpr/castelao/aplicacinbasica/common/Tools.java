@@ -16,13 +16,15 @@ import java.io.IOException;
 public class Tools {
 
     private static Tools instance = new Tools();
+    private Context ctx;
 
     private Tools(){}
-    public Tools init(){
+    public static Tools init(@NonNull Context ctx){
+        instance.ctx = ctx;
         return instance;
     }
 
-    public Bitmap getBitmapFromResID(@NonNull Context ctx, @DrawableRes int id){
+    public Bitmap getBitmapFromResID(@DrawableRes int id){
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 return ImageDecoder.decodeBitmap(ImageDecoder.createSource(ctx.getResources(), id));
