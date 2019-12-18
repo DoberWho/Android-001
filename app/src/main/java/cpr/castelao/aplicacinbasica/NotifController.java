@@ -7,11 +7,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
 import android.graphics.drawable.Icon;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
+
+import java.io.IOException;
 
 public class NotifController {
 
+    private static final String url = "https://ep01.epimg.net/elpais/imagenes/2019/08/23/icon/1566563189_400624_1566563342_noticia_normal.jpg";
     private int REQUEST_CODE = 1234;
     private int icon = R.mipmap.ic_launcher;
     private Bitmap iconIcon;
@@ -27,6 +33,8 @@ public class NotifController {
         instance.ctx = ctx;
         instance.time = System.currentTimeMillis();
         instance.iconIcon = BitmapFactory.decodeResource(ctx.getResources(), instance.icon);
+
+
         instance.initData();
         return instance;
     }
@@ -50,19 +58,25 @@ public class NotifController {
         msg = msg + msg;
         msg = msg + msg;
 
-        Notification n  = new Notification.Builder(ctx)
-                .setContentTitle("New mail from " + "test@gmail.com")
-                .setContentText(msg)
-                .setSmallIcon(icon)
-                .setLargeIcon(iconIcon)
-                .setContentIntent(pIntent)
-                .setAutoCancel(true)
-                .setStyle(new Notification.BigTextStyle().bigText(msg))
-                //.addAction(R.drawable.icon, "Call", pIntent)
-                //.addAction(R.drawable.icon, "More", pIntent)
-                //.addAction(R.drawable.icon, "And more", pIntent)
-                .build();
 
+        Notification.Builder builder = new Notification.Builder(ctx);
+        builder.setContentTitle("New mail from " + "test@gmail.com");
+        builder.setContentText(msg);
+        builder.setSmallIcon(icon);
+        builder.setLargeIcon(iconIcon);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            builder.setBadgeIconType(icon);
+        }
+
+        builder.setContentIntent(pIntent);
+        builder.setAutoCancel(true);
+        builder.setStyle(new Notification.BigTextStyle().bigText(msg));
+        //builder.addAction(R.drawable.icon, "Call", pIntent)
+        //builder.addAction(R.drawable.icon, "More", pIntent)
+        //builder.addAction(R.drawable.icon, "And more", pIntent)
+
+        Notification n  = builder.build();
 
         NotificationManager manager = (NotificationManager) ctx.getSystemService(ctx.NOTIFICATION_SERVICE);
         manager.notify(REQUEST_CODE, n);
