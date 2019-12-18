@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name=".DownloadIntentService"
+            android:name=".services.DownloadIntentService"
             android:exported="false"></service>
         <service
-            android:name=".DownloadService"
+            android:name=".services.DownloadService"
             android:enabled="true"
             android:exported="true" />
 

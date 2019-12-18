@@ -1,7 +1,6 @@
 package cpr.castelao.aplicacinbasica;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import cpr.castelao.aplicacinbasica.adapter.ListAdapter;
+import cpr.castelao.aplicacinbasica.common.NotifController;
 import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
 
 public class MainActivity extends AppCompatActivity {

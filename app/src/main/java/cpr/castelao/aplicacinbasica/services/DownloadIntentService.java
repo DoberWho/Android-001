@@ -1,4 +1,4 @@
-package cpr.castelao.aplicacinbasica;
+package cpr.castelao.aplicacinbasica.services;
 
 import android.app.IntentService;
 import android.content.Intent;

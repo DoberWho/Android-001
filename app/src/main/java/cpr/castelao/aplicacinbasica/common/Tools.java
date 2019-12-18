@@ -27,7 +27,8 @@ public class Tools {
     public Bitmap getBitmapFromResID(@DrawableRes int id){
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                return ImageDecoder.decodeBitmap(ImageDecoder.createSource(ctx.getResources(), id));
+                ImageDecoder.Source decoder = ImageDecoder.createSource(ctx.getResources(), id);
+                return ImageDecoder.decodeBitmap(decoder);
             } else {
                 String resourceScheme = "res";
                 Uri uri = new Uri.Builder()
