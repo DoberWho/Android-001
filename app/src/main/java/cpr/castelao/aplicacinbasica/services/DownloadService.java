@@ -13,16 +13,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import cpr.castelao.aplicacinbasica.DetailsActivity;
+import cpr.castelao.aplicacinbasica.common.DownloadTask;
 import cpr.castelao.aplicacinbasica.common.NotifController;
 
 public class DownloadService extends Service {
 
 
     public static final String URL = "download_service_url_from_my_balls";
-    private int result = Activity.RESULT_CANCELED;
+
 
 
     public DownloadService() {}
@@ -32,51 +35,15 @@ public class DownloadService extends Service {
 
 
        String urlPath = intent.getStringExtra(URL);
-       String fileName = "fichero.jpg";
-
-       // getDataDirectory() // <- Directorio interno de la aplicación
-        //getExternalStorageDirectory() // <- SDCARD
-        //getDownloadCacheDirectory() // <- Directorio de Cache de Aplicación
-        // .getRootDirectory() // <- Directorio Raiz de la memoria interna del dispositivo
-        File dirPath = Environment.getDataDirectory();
-        File dirRoot = new File(dirPath, "misFicheros");
-        dirRoot.mkdirs();
-        File output = new File(dirRoot, fileName);
-        InputStream stream = null;
-        FileOutputStream fos = null;
+        java.net.URL url;
         try {
 
-            java.net.URL url = new URL(urlPath);
-            stream = url.openConnection().getInputStream();
-            InputStreamReader reader = new InputStreamReader(stream);
-            fos = new FileOutputStream(output.getPath());
-            int next = -1;
-            while ((next = reader.read()) != -1) {
-                fos.write(next);
-            }
-            // successfully finished
-            result = Activity.RESULT_OK;
+            url = new URL(urlPath);
+            new DownloadTask(this).execute(url, url, url ,url ,url );
 
-        } catch (Exception e) {
+        } catch (MalformedURLException e) {
             e.printStackTrace();
-        } finally {
-            if (stream != null) {
-                try {
-                    stream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
-        publishResults(output.getAbsolutePath(), result);
-
 
         return Service.START_NOT_STICKY;
     }
