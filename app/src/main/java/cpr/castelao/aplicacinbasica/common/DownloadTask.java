@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.URL;
 import java.nio.file.Files;
 
@@ -42,12 +43,10 @@ public class DownloadTask extends AsyncTask<URL, Long, Integer> {
         // getExternalStorageDirectory() // <- SDCARD
         // getDownloadCacheDirectory() // <- Directorio de Cache de Aplicación
         // getRootDirectory() // <- Directorio Raiz de la memoria interna del dispositivo
-        File dirPath = Environment.getExternalStorageDirectory();
+        String dirPath = Environment.getExternalStorageDirectory().toString();
+
         File dirRoot = new File(dirPath, "misFicheros");
         dirRoot.mkdirs();
-
-        InputStream stream = null;
-        FileOutputStream fos = null;
 
         try {
 
@@ -58,15 +57,31 @@ public class DownloadTask extends AsyncTask<URL, Long, Integer> {
                 Log.d("ASYNTACK","FICHERO:"+output.getAbsolutePath());
                 output.createNewFile();
 
-                stream = url.openConnection().getInputStream();
+                InputStream stream = url.openConnection().getInputStream();
                 InputStreamReader reader = new InputStreamReader(stream);
-                fos = new FileOutputStream(output.getPath());
+                OutputStream fos = new FileOutputStream(output.getAbsolutePath());
                 int next = -1;
                 while ((next = reader.read()) != -1) {
                     fos.write(next);
                 }
                 totalSize++;
                 publishProgress(totalSize);
+
+                if (stream != null) {
+                    try {
+                        stream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (fos != null) {
+                    try {
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
             }
             // successfully finished
             result = Activity.RESULT_OK;
@@ -74,24 +89,7 @@ public class DownloadTask extends AsyncTask<URL, Long, Integer> {
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("ASYNTASK","OSTIAS, Fue Mal => "+e.getLocalizedMessage());
-        } finally {
-            if (stream != null) {
-                try {
-                    stream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
-
-
         return len;
     }
 
