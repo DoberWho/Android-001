@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import cpr.castelao.aplicacinbasica.adapter.ListAdapter;
 import cpr.castelao.aplicacinbasica.common.NotifController;
 import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
+import cpr.castelao.aplicacinbasica.services.DownloadService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,6 +52,19 @@ public class MainActivity extends AppCompatActivity {
 
                 NotifController ctrl = NotifController.init(ctx);
                 ctrl.showNotif(DetailsActivity.class, item);
+            }
+        });
+
+        Button btnDown = findViewById(R.id.act_main_download_btn);
+        btnDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String url = "https://ep01.epimg.net/elpais/imagenes/2019/08/23/icon/1566563189_400624_1566563342_noticia_normal.jpg";
+
+                Intent i= new Intent(ctx, DownloadService.class);
+                i.putExtra(DownloadService.URL, url);
+                startService(i);
             }
         });
     }

@@ -33,11 +33,11 @@
             android:text="@string/notification_label" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/act_main_download_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="BTN012" />
+            android:text="@string/download_label" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

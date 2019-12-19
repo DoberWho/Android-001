@@ -5,4 +5,5 @@
     <string name="title_activity_details">Detalle Posicion</string>
     <string name="title_activity_dialog">Activity no FullScreen</string>
     <string name="notification_label">Notificacion</string>
+    <string name="download_label">Descargar</string>
 </resources>
