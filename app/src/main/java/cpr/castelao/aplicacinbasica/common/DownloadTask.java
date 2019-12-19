@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
@@ -54,7 +55,7 @@ public class DownloadTask extends AsyncTask<URL, Long, Integer> {
 
                 String nombre = fileName + totalSize + fileTail;
                 File output = new File(dirRoot, nombre);
-                System.out.println("FICHERO:"+output.getAbsolutePath());
+                Log.d("ASYNTACK","FICHERO:"+output.getAbsolutePath());
                 output.createNewFile();
 
                 stream = url.openConnection().getInputStream();
@@ -72,6 +73,7 @@ public class DownloadTask extends AsyncTask<URL, Long, Integer> {
 
         } catch (Exception e) {
             e.printStackTrace();
+            Log.e("ASYNTASK","OSTIAS, Fue Mal => "+e.getLocalizedMessage());
         } finally {
             if (stream != null) {
                 try {
@@ -97,18 +99,19 @@ public class DownloadTask extends AsyncTask<URL, Long, Integer> {
     protected void onProgressUpdate(Long... progress)  {
         super.onProgressUpdate(progress);
         toast(ctx, "Descargados: "+progress);
+        Log.i("ASYNTASK","DESCARGADOS: "+progress);
     }
 
 
     protected void onPostExecute(Long result) {
         toast(ctx, "Descargas TOTALES: "+result);
+        Log.i("ASYNTASK","DESCARGAS TOTALES: "+result);
     }
 
 
     public void toast(Context ctx, String msg) {
 
         Toast toast = Toast.makeText(ctx, msg, Toast.LENGTH_SHORT);
-
         toast.show();
     }
 }
