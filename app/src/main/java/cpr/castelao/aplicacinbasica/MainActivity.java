@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        ListAdapter adapter = new ListAdapter(items, listener);
+        ListAdapter adapter = new ListAdapter(this,items, listener);
 
         RecyclerView lista = findViewById(R.id.act_main_lista_rec);
 
