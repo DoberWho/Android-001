@@ -12,7 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends BasicApp {
 
     public static final String ITEM_CLICKADO = "item_clickado";
     String item;

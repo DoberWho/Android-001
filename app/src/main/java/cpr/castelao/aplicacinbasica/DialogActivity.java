@@ -10,7 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-public class DialogActivity extends AppCompatActivity {
+public class DialogActivity extends BasicApp {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -12,7 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends BasicApp {
 
     Context ctx;
     @Override

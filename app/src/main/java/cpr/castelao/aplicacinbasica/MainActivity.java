@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.jakewharton.threetenabp.AndroidThreeTen;
+
 import java.util.ArrayList;
 
 import cpr.castelao.aplicacinbasica.adapter.ListAdapter;
@@ -18,13 +20,16 @@ import cpr.castelao.aplicacinbasica.common.NotifController;
 import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
 import cpr.castelao.aplicacinbasica.services.DownloadService;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BasicApp {
 
     Context ctx;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         toast("onCreate");
 
         initButtons();
