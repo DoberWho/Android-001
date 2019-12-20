@@ -1,5 +1,7 @@
 package cpr.castelao.aplicacinbasica.adapter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +25,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
     private static final int layout = R.layout.adapter_list_item;
     private final ListAdapterListener listener;
+    private final Activity act;
     private List<String> items = new ArrayList<String>();
 
-    public ListAdapter(ArrayList<String> words, ListAdapterListener listener) {
+    public ListAdapter(Activity act, ArrayList<String> words, ListAdapterListener listener) {
+        this.act = act;
         this.items = words;
         this.listener = listener;
     }
@@ -53,7 +59,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
             }
         });
 
+        if (holder.image != null){
+            Glide.with(act)
+                    .load("https://picsum.photos/200/300")
+                    .centerCrop()
+                    .into(holder.image);
+        }
+
     }
+
 
     @Override
     public int getItemCount() {
