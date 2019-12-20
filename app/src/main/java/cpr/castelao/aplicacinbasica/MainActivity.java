@@ -9,11 +9,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
+import org.threeten.bp.LocalDateTime;
+import org.threeten.bp.format.DateTimeFormatter;
+import org.threeten.bp.format.DateTimeFormatterBuilder;
+import org.threeten.bp.format.SignStyle;
+
+import static org.threeten.bp.Month.DECEMBER;
+import static org.threeten.bp.temporal.ChronoField.DAY_OF_MONTH;
+import static org.threeten.bp.temporal.ChronoField.DAY_OF_YEAR;
+import static org.threeten.bp.temporal.ChronoField.MONTH_OF_YEAR;
+import static org.threeten.bp.temporal.ChronoField.YEAR;
+import static org.threeten.bp.temporal.TemporalAdjusters.lastDayOfMonth;
+
 import java.util.ArrayList;
+import java.util.Locale;
 
 import cpr.castelao.aplicacinbasica.adapter.ListAdapter;
 import cpr.castelao.aplicacinbasica.common.NotifController;
@@ -34,6 +48,30 @@ public class MainActivity extends BasicApp {
 
         initButtons();
         initData();
+        initViews();
+    }
+
+    void initViews(){
+
+        LocalDateTime dt = LocalDateTime.of(2008, 3, 30, 1, 30);
+
+        TextView lblTime = findViewById(R.id.act_main_time_lbl);
+        TextView lblTime2 = findViewById(R.id.act_main_time2_lbl);
+        lblTime.setText(""+ dt);
+
+        DateTimeFormatter f = new DateTimeFormatterBuilder()
+                .appendValue(YEAR, 4, 10, SignStyle.ALWAYS)
+                .appendLiteral(' ')
+                .appendText(MONTH_OF_YEAR)
+                .appendLiteral('(')
+                .appendValue(MONTH_OF_YEAR)
+                .appendLiteral(')')
+                .appendLiteral(' ')
+                .appendValue(DAY_OF_MONTH, 2)
+                .toFormatter(Locale.ENGLISH);
+
+        String formatted = f.format(dt);
+        lblTime2.setText(formatted);
     }
 
     void initButtons() {
