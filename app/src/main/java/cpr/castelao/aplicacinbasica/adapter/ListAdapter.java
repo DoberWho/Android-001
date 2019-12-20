@@ -20,15 +20,16 @@ import java.util.List;
 
 import cpr.castelao.aplicacinbasica.R;
 import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
+import cpr.castelao.aplicacinbasica.model.Persona;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
 
     private static final int layout = R.layout.adapter_list_item;
     private final ListAdapterListener listener;
     private final Activity act;
-    private List<String> items = new ArrayList<String>();
+    private List<Persona> items = new ArrayList<Persona>();
 
-    public ListAdapter(Activity act, ArrayList<String> words, ListAdapterListener listener) {
+    public ListAdapter(Activity act, List<Persona> words, ListAdapterListener listener) {
         this.act = act;
         this.items = words;
         this.listener = listener;
@@ -45,10 +46,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        final String item = items.get(position);
+        final Persona item = items.get(position);
 
-        holder.txtTitle.setText(item);
-        holder.txtSubtitle.setText("POS: "+position);
+        holder.txtTitle.setText(item.name);
+        holder.txtSubtitle.setText(item.trabajo);
 
         holder.linRoot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +62,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
         if (holder.image != null){
             Glide.with(act)
-                    .load("https://picsum.photos/200/300")
+                    .load(item.imagen)
                     .centerCrop()
                     .into(holder.image);
         }

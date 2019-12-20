@@ -3,6 +3,7 @@ package cpr.castelao.aplicacinbasica;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,11 +28,14 @@ import static org.threeten.bp.temporal.ChronoField.YEAR;
 import static org.threeten.bp.temporal.TemporalAdjusters.lastDayOfMonth;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import cpr.castelao.aplicacinbasica.adapter.ListAdapter;
 import cpr.castelao.aplicacinbasica.common.NotifController;
 import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
+import cpr.castelao.aplicacinbasica.model.Persona;
+import cpr.castelao.aplicacinbasica.model.db.AppDatabase;
 import cpr.castelao.aplicacinbasica.services.DownloadService;
 
 public class MainActivity extends BasicApp {
@@ -114,14 +118,26 @@ public class MainActivity extends BasicApp {
 
     void initData() {
 
-        ArrayList<String> items = new ArrayList();
+        // ERROR: Cannot access database on the main thread since it may potentially lock the UI for a long period of time.
+        String dbName = "database-name";
+        AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, dbName).build();
+
         for (int idx = 0; idx < 10; idx++) {
-            items.add("Elemento " + idx);
+
+            Persona p = new Persona();
+            p.name = "Persona "+idx;
+            p.trabajo = "Trabajo "+idx;
+            p.imagen = "http://lorempixel.com/100/100/";
+
+            db.userDao().insertAll(p);
         }
+
+
+        List<Persona> listado = db.userDao().getAll();
 
         ListAdapterListener listener = new ListAdapterListener() {
             @Override
-            public void click(String item) {
+            public void click(Persona item) {
 
                 Intent intent = new Intent(ctx, DetailsActivity.class);
                 intent.putExtra(DetailsActivity.ITEM_CLICKADO, item);
@@ -129,7 +145,7 @@ public class MainActivity extends BasicApp {
             }
         };
 
-        ListAdapter adapter = new ListAdapter(this,items, listener);
+        ListAdapter adapter = new ListAdapter(this, listado, listener);
 
         RecyclerView lista = findViewById(R.id.act_main_lista_rec);
 

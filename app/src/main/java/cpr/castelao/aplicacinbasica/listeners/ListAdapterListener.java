@@ -1,5 +1,7 @@
 package cpr.castelao.aplicacinbasica.listeners;
 
+import cpr.castelao.aplicacinbasica.model.Persona;
+
 public interface ListAdapterListener {
-    void click(String item);
+    void click(Persona item);
 }

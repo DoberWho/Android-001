@@ -12,10 +12,12 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import cpr.castelao.aplicacinbasica.model.Persona;
+
 public class DetailsActivity extends BasicApp {
 
     public static final String ITEM_CLICKADO = "item_clickado";
-    String item;
+    Persona item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +27,14 @@ public class DetailsActivity extends BasicApp {
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
-        item = intent.getStringExtra(ITEM_CLICKADO);
+        item = (Persona) intent.getSerializableExtra(ITEM_CLICKADO);
 
         initData();
     }
 
     void initData(){
         TextView txt = findViewById(R.id.act_details_item_lbl);
-        txt.setText("DETALLES: "+item);
+        txt.setText("DETALLES: "+item.name);
     }
 
 }
