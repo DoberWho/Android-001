@@ -2,7 +2,6 @@ package cpr.castelao.aplicacinbasica;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
