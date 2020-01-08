@@ -131,7 +131,7 @@ public class MainActivity extends BasicApp {
             public void click(Persona item) {
 
                 Intent intent = new Intent(ctx, DetailsActivity.class);
-                intent.putExtra(DetailsActivity.ITEM_CLICKADO, item);
+                //intent.putExtra(DetailsActivity.ITEM_CLICKADO, item);
                 startActivity(intent);
             }
         };
