@@ -1,6 +1,5 @@
 package cpr.castelao.aplicacinbasica;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -13,21 +12,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jakewharton.threetenabp.AndroidThreeTen;
-
 import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.format.DateTimeFormatterBuilder;
 import org.threeten.bp.format.SignStyle;
 
-import static org.threeten.bp.Month.DECEMBER;
 import static org.threeten.bp.temporal.ChronoField.DAY_OF_MONTH;
-import static org.threeten.bp.temporal.ChronoField.DAY_OF_YEAR;
 import static org.threeten.bp.temporal.ChronoField.MONTH_OF_YEAR;
 import static org.threeten.bp.temporal.ChronoField.YEAR;
-import static org.threeten.bp.temporal.TemporalAdjusters.lastDayOfMonth;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -35,7 +28,6 @@ import cpr.castelao.aplicacinbasica.adapter.ListAdapter;
 import cpr.castelao.aplicacinbasica.common.NotifController;
 import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
 import cpr.castelao.aplicacinbasica.model.Persona;
-import cpr.castelao.aplicacinbasica.model.db.AppDatabase;
 import cpr.castelao.aplicacinbasica.services.DownloadService;
 
 public class MainActivity extends BasicApp {
@@ -120,7 +112,6 @@ public class MainActivity extends BasicApp {
 
         // ERROR: Cannot access database on the main thread since it may potentially lock the UI for a long period of time.
         String dbName = "database-name";
-        AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, dbName).build();
 
         for (int idx = 0; idx < 10; idx++) {
 
@@ -129,11 +120,11 @@ public class MainActivity extends BasicApp {
             p.trabajo = "Trabajo "+idx;
             p.imagen = "http://lorempixel.com/100/100/";
 
-            db.userDao().insertAll(p);
+            p.save();
         }
 
 
-        List<Persona> listado = db.userDao().getAll();
+        List<Persona> listado = Persona.listAll(Persona.class);
 
         ListAdapterListener listener = new ListAdapterListener() {
             @Override

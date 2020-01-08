@@ -1,23 +1,16 @@
 package cpr.castelao.aplicacinbasica.model;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
-import java.io.Serializable;
+import com.orm.SugarRecord;
 
-@Entity
-public class Persona implements Serializable {
+public class Persona  extends SugarRecord<Persona> {
 
-    @PrimaryKey
+
     public int uid;
 
-    @ColumnInfo(name = "name")
     public String name;
 
-    @ColumnInfo(name = "trabajo")
     public String trabajo;
 
-    @ColumnInfo(name = "imagen")
     public String imagen;
 }
