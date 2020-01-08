@@ -23,6 +23,8 @@ import static org.threeten.bp.temporal.ChronoField.YEAR;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import cpr.castelao.aplicacinbasica.adapter.ListAdapter;
 import cpr.castelao.aplicacinbasica.common.NotifController;
 import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
@@ -32,12 +34,14 @@ import cpr.castelao.aplicacinbasica.services.DownloadService;
 public class MainActivity extends BasicApp {
 
     Context ctx;
+    @BindView(R.id.act_main_time_lbl) TextView lblTime;
+    @BindView(R.id.act_main_time2_lbl) TextView lblTime2;
+    @BindView(R.id.act_main_lista_rec) RecyclerView lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         toast("onCreate");
 
@@ -50,8 +54,6 @@ public class MainActivity extends BasicApp {
 
         LocalDateTime dt = LocalDateTime.of(2008, 3, 30, 1, 30);
 
-        TextView lblTime = findViewById(R.id.act_main_time_lbl);
-        TextView lblTime2 = findViewById(R.id.act_main_time2_lbl);
         lblTime.setText(""+ dt);
 
         DateTimeFormatter f = new DateTimeFormatterBuilder()
@@ -69,16 +71,20 @@ public class MainActivity extends BasicApp {
         lblTime2.setText(formatted);
     }
 
+    @OnClick(R.id.act_main_setting_btn)
+    void submit() {
+        Intent intent = new Intent(ctx, SettingsActivity.class);
+        startActivity(intent);
+    }
+
     void initButtons() {
+
         Button btnSettings = findViewById(R.id.act_main_setting_btn);
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Intent intent = new Intent(ctx, SettingsActivity.class);
                 startActivity(intent);
-
             }
         });
 
@@ -109,9 +115,6 @@ public class MainActivity extends BasicApp {
 
     void initData() {
 
-        // ERROR: Cannot access database on the main thread since it may potentially lock the UI for a long period of time.
-        String dbName = "database-name";
-
         for (int idx = 0; idx < 10; idx++) {
 
             Persona p = new Persona();
@@ -137,17 +140,12 @@ public class MainActivity extends BasicApp {
 
         ListAdapter adapter = new ListAdapter(this, listado, listener);
 
-        RecyclerView lista = findViewById(R.id.act_main_lista_rec);
-
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         // LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
         lista.setLayoutManager(mLayoutManager);
-
         lista.setAdapter(adapter);
     }
-
-
 
 
     @Override
