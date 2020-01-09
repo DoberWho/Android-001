@@ -60,7 +60,7 @@ public class MainActivity extends BasicApp {
 
         LocalDateTime dt = LocalDateTime.of(2008, 3, 30, 1, 30);
 
-        lblTime.setText(""+ dt);
+        //lblTime.setText(""+ dt);
 
         DateTimeFormatter f = new DateTimeFormatterBuilder()
                 .appendValue(YEAR, 4, 10, SignStyle.ALWAYS)
@@ -74,7 +74,7 @@ public class MainActivity extends BasicApp {
                 .toFormatter(Locale.ENGLISH);
 
         String formatted = f.format(dt);
-        lblTime2.setText(formatted);
+        //lblTime2.setText(formatted);
     }
 
     @OnClick(R.id.act_main_setting_btn)
