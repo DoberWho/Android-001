@@ -20,6 +20,7 @@ import static org.threeten.bp.temporal.ChronoField.DAY_OF_MONTH;
 import static org.threeten.bp.temporal.ChronoField.MONTH_OF_YEAR;
 import static org.threeten.bp.temporal.ChronoField.YEAR;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
@@ -28,8 +29,13 @@ import butterknife.OnClick;
 import cpr.castelao.aplicacinbasica.adapter.ListAdapter;
 import cpr.castelao.aplicacinbasica.common.NotifController;
 import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
+import cpr.castelao.aplicacinbasica.model.ListaPokemon;
 import cpr.castelao.aplicacinbasica.model.Persona;
 import cpr.castelao.aplicacinbasica.services.DownloadService;
+import cpr.castelao.aplicacinbasica.services.PokeApiController;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends BasicApp {
 
@@ -113,8 +119,7 @@ public class MainActivity extends BasicApp {
         });
     }
 
-    void initData() {
-
+    private void initDb(){
         for (int idx = 0; idx < 10; idx++) {
 
             Persona p = new Persona();
@@ -145,6 +150,32 @@ public class MainActivity extends BasicApp {
 
         lista.setLayoutManager(mLayoutManager);
         lista.setAdapter(adapter);
+    }
+
+    void initData() {
+
+        //initDb();
+
+        PokeApiController ctrl = new PokeApiController();
+        try {
+            ctrl.todosLosPokemones(new Callback<ListaPokemon>() {
+                @Override
+                public void onResponse(Call<ListaPokemon> call, Response<ListaPokemon> response) {
+                    ListaPokemon pokemons = response.body();
+                    toast("Hay: "+pokemons.getCount()+" Pokemons");
+                    // TODO: Deberiamos hacer un Adapter para la lista de los pokemons
+                }
+
+                @Override
+                public void onFailure(Call<ListaPokemon> call, Throwable t) {
+                    toast("Hubo un Error, Lo Siento");
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 
