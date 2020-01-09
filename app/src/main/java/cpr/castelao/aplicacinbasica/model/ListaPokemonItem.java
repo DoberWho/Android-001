@@ -2,8 +2,8 @@ package cpr.castelao.aplicacinbasica.model;
 
 public class ListaPokemonItem {
 
-    private String name = "";
-    private String url = "";
+    String name = "";
+    String url = "";
 
     public String getName() {
         return name;

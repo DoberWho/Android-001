@@ -1,14 +1,14 @@
 package cpr.castelao.aplicacinbasica.model;
 
 public class PerfilPokemonImagenes {
-    private String back_default = "";
-    private String back_female = "";
-    private String back_shiny = "";
-    private String back_shiny_female = "";
-    private String front_default = "";
-    private String front_female = "";
-    private String front_shiny = "";
-    private String front_shiny_female = "";
+    String back_default = "";
+    String back_female = "";
+    String back_shiny = "";
+    String back_shiny_female = "";
+    String front_default = "";
+    String front_female = "";
+    String front_shiny = "";
+    String front_shiny_female = "";
 
     public String getBack_default() {
         return back_default;

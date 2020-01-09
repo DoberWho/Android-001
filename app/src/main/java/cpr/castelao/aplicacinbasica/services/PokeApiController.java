@@ -8,6 +8,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PokeApiController {
 
@@ -18,6 +19,7 @@ public class PokeApiController {
     public PokeApiController(){
         retrofit = new Retrofit.Builder()
                 .baseUrl(HOST)
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
         service = retrofit.create(PokeApiRetrofit.class);
     }

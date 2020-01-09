@@ -2,10 +2,10 @@ package cpr.castelao.aplicacinbasica.model;
 
 public class PerfilPokemon {
 
-    private String id = "";
-    private int height = 0;
-    private String name = "";
-    private PerfilPokemonImagenes sprites;
+    String id = "";
+    int height = 0;
+    String name = "";
+    PerfilPokemonImagenes sprites;
 
     public String getId() {
         return id;

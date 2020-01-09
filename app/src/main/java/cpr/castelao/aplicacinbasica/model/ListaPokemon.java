@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class ListaPokemon {
 
-    private int count = 0;
-    private String next = "";
-    private String previous = "";
-    private ArrayList<ListaPokemonItem> results = new ArrayList<ListaPokemonItem>();
+    int count = 0;
+    String next = "";
+    String previous = "";
+    ArrayList<ListaPokemonItem> results = new ArrayList<ListaPokemonItem>();
 
     public int getCount() {
         return count;
