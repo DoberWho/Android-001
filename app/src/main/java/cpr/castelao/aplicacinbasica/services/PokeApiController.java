@@ -25,10 +25,21 @@ public class PokeApiController {
     }
 
     public void todosLosPokemones(Callback<ListaPokemon> callback) throws IOException {
-
         Call<ListaPokemon> call = service.listaCompleta();
+
         call.enqueue(callback);
     }
+
+    public void pokemonesPaginados(int pagina, Callback<ListaPokemon> callback) throws IOException {
+        if (pagina <= 0){
+            pagina = 1;
+        }
+        pagina = (pagina - 1) * PokeApiRetrofit.LIMITE;
+        Call<ListaPokemon> call = service.listaPaginada(pagina);
+
+        call.enqueue(callback);
+    }
+
     public PerfilPokemon pokemon(int id){
         return null;
     }

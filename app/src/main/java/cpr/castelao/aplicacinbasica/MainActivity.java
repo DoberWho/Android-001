@@ -110,13 +110,40 @@ public class MainActivity extends BasicApp {
             @Override
             public void onClick(View v) {
 
+                // Uso de un Service
+                /*
                 String url = "https://ep01.epimg.net/elpais/imagenes/2019/08/23/icon/1566563189_400624_1566563342_noticia_normal.jpg";
 
                 Intent i= new Intent(ctx, DownloadService.class);
                 i.putExtra(DownloadService.URL, url);
                 startService(i);
+                //*/
+
+                try {
+                    doRequest();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
+    }
+
+    private void doRequest() throws IOException {
+        PokeApiController ctrl = new PokeApiController();
+
+            ctrl.todosLosPokemones(new Callback<ListaPokemon>() {
+                @Override
+                public void onResponse(Call<ListaPokemon> call, Response<ListaPokemon> response) {
+                    ListaPokemon pokemons = response.body();
+                    toast("Hay: "+pokemons.getCount()+" Pokemons");
+                    // TODO: Deberiamos hacer un Adapter para la lista de los pokemons
+                }
+
+                @Override
+                public void onFailure(Call<ListaPokemon> call, Throwable t) {
+                    toast("Hubo un Error, Lo Siento");
+                }
+            });
     }
 
     private void initDb(){
@@ -155,26 +182,6 @@ public class MainActivity extends BasicApp {
     void initData() {
 
         //initDb();
-
-        PokeApiController ctrl = new PokeApiController();
-        try {
-            ctrl.todosLosPokemones(new Callback<ListaPokemon>() {
-                @Override
-                public void onResponse(Call<ListaPokemon> call, Response<ListaPokemon> response) {
-                    ListaPokemon pokemons = response.body();
-                    toast("Hay: "+pokemons.getCount()+" Pokemons");
-                    // TODO: Deberiamos hacer un Adapter para la lista de los pokemons
-                }
-
-                @Override
-                public void onFailure(Call<ListaPokemon> call, Throwable t) {
-                    toast("Hubo un Error, Lo Siento");
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
 
     }
 
