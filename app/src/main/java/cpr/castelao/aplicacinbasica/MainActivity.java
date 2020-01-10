@@ -31,7 +31,6 @@ import cpr.castelao.aplicacinbasica.common.NotifController;
 import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
 import cpr.castelao.aplicacinbasica.model.ListaPokemon;
 import cpr.castelao.aplicacinbasica.model.Persona;
-import cpr.castelao.aplicacinbasica.services.DownloadService;
 import cpr.castelao.aplicacinbasica.services.PokeApiController;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -77,7 +76,7 @@ public class MainActivity extends BasicApp {
         //lblTime2.setText(formatted);
     }
 
-    @OnClick(R.id.act_main_setting_btn)
+    @OnClick(R.id.act_main_settings_btn)
     void submit() {
         Intent intent = new Intent(ctx, SettingsActivity.class);
         startActivity(intent);
@@ -97,7 +96,7 @@ public class MainActivity extends BasicApp {
             }
         });
 
-        Button btnSettings = findViewById(R.id.act_main_setting_btn);
+        Button btnSettings = findViewById(R.id.act_main_settings_btn);
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
