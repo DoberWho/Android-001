@@ -85,6 +85,18 @@ public class MainActivity extends BasicApp {
 
     void initButtons() {
 
+        // Recojemos el String traducido segun el idioma del terminal
+        String str = getString(R.string.notification_label);
+
+
+        Button btnOkhttp = findViewById(R.id.act_main_okhttp_btn);
+        btnOkhttp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         Button btnSettings = findViewById(R.id.act_main_setting_btn);
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override

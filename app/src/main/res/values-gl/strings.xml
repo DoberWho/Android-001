@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplicación Basica</string>
+    <string name="download_label">Descarjar</string>
+    <string name="notification_label">Avisoche</string>
+    <string name="title_activity_details">Posicion</string>
+    <string name="title_activity_dialog">Pantalla A Full</string>
+    <string name="title_activity_settings">Cousas</string>
+</resources>
