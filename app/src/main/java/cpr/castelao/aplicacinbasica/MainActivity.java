@@ -21,6 +21,7 @@ import static org.threeten.bp.temporal.ChronoField.MONTH_OF_YEAR;
 import static org.threeten.bp.temporal.ChronoField.YEAR;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -39,9 +40,9 @@ import retrofit2.Response;
 public class MainActivity extends BasicApp {
 
     Context ctx;
-    @BindView(R.id.act_main_time_lbl) TextView lblTime;
-    @BindView(R.id.act_main_time2_lbl) TextView lblTime2;
-    @BindView(R.id.act_main_lista_rec) RecyclerView lista;
+    //@BindView(R.id.act_main_time_lbl) TextView lblTime;
+    //@BindView(R.id.act_main_time2_lbl) TextView lblTime2;
+    //@BindView(R.id.act_main_lista_rec) RecyclerView lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,25 +159,26 @@ public class MainActivity extends BasicApp {
     }
 
     private void initDb(){
+        List<Persona> listado = new ArrayList<>();
         for (int idx = 0; idx < 10; idx++) {
 
             Persona p = new Persona();
             p.name = "Persona "+idx;
             p.trabajo = "Trabajo "+idx;
             p.imagen = "http://lorempixel.com/100/100/";
-
-            p.save();
+            listado.add(p);
+            //p.save();
         }
 
-
-        List<Persona> listado = Persona.listAll(Persona.class);
+        //Persona.listAll(Persona.class);
 
         ListAdapterListener listener = new ListAdapterListener() {
             @Override
             public void click(Persona item) {
 
                 Intent intent = new Intent(ctx, DetailsActivity.class);
-                //intent.putExtra(DetailsActivity.ITEM_CLICKADO, item);
+                intent.putExtra(DetailsActivity.ITEM_CLICKADO, item);
+                intent.putExtra("persona","");
                 startActivity(intent);
             }
         };
@@ -186,13 +188,14 @@ public class MainActivity extends BasicApp {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         // LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
+        RecyclerView lista = findViewById(R.id.act_main_lista_rec);
         lista.setLayoutManager(mLayoutManager);
         lista.setAdapter(adapter);
     }
 
     void initData() {
 
-        //initDb();
+        initDb();
 
     }
 

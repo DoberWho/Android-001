@@ -3,7 +3,9 @@ package cpr.castelao.aplicacinbasica.model;
 
 import com.orm.SugarRecord;
 
-public class Persona  extends SugarRecord<Persona> {
+import java.io.Serializable;
+
+public class Persona  extends SugarRecord<Persona> implements Serializable {
 
 
     public int uid;
