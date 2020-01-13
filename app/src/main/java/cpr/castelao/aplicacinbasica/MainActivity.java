@@ -140,7 +140,7 @@ public class MainActivity extends BasicApp {
                 }
                 //*/
 
-                AnimeFLVController ctrl = new AnimeFLVController();
+                AnimeFLVController ctrl = new AnimeFLVController(getApplicationContext());
                 try {
                     ctrl.getEpisodies();
                 } catch (IOException e) {
