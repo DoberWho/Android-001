@@ -32,6 +32,7 @@ import cpr.castelao.aplicacinbasica.common.NotifController;
 import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
 import cpr.castelao.aplicacinbasica.model.ListaPokemon;
 import cpr.castelao.aplicacinbasica.model.Persona;
+import cpr.castelao.aplicacinbasica.services.AnimeFLVController;
 import cpr.castelao.aplicacinbasica.services.PokeApiController;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -131,11 +132,21 @@ public class MainActivity extends BasicApp {
                 startService(i);
                 //*/
 
+               /*
                 try {
                     doRequest();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                //*/
+
+                AnimeFLVController ctrl = new AnimeFLVController();
+                try {
+                    ctrl.getEpisodies();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
     }

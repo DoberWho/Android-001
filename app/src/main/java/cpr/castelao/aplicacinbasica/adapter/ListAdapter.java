@@ -29,9 +29,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
     private final Activity act;
     private List<Persona> items = new ArrayList<Persona>();
 
-    public ListAdapter(Activity act, List<Persona> words, ListAdapterListener listener) {
+    public ListAdapter(Activity act, List<Persona> items, ListAdapterListener listener) {
         this.act = act;
-        this.items = words;
+        this.items = items;
         this.listener = listener;
     }
 
