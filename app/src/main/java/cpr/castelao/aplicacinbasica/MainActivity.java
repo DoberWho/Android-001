@@ -87,7 +87,8 @@ public class MainActivity extends BasicApp {
     void initButtons() {
 
         // Recojemos el String traducido segun el idioma del terminal
-        String str = getString(R.string.notification_label);
+        String str = ctx.getString(R.string.notification_label);
+
 
 
         Button btnOkhttp = findViewById(R.id.act_main_okhttp_btn);
@@ -140,7 +141,7 @@ public class MainActivity extends BasicApp {
                 }
                 //*/
 
-                AnimeFLVController ctrl = new AnimeFLVController(getApplicationContext());
+                AnimeFLVController ctrl = new AnimeFLVController(ctx);
                 try {
                     ctrl.getEpisodies();
                 } catch (IOException e) {

@@ -2,6 +2,7 @@ package cpr.castelao.aplicacinbasica.services;
 
 import java.io.IOException;
 
+import cpr.castelao.aplicacinbasica.R;
 import cpr.castelao.aplicacinbasica.model.ListaPokemon;
 import cpr.castelao.aplicacinbasica.model.PerfilPokemon;
 import retrofit2.Call;
