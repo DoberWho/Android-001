@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import cpr.castelao.aplicacinbasica.R;
 
@@ -26,7 +28,11 @@ public class Fragment01 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.frg_fragment01, container, false);
+
+        View view = inflater.inflate(R.layout.frg_fragment01, container, false);
+        initButtons(view);
+
+        return view;
     }
 
     @Override
@@ -34,6 +40,16 @@ public class Fragment01 extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(FrgViewModel.class);
         // TODO: Use the ViewModel
+    }
+
+    private void initButtons(View view) {
+        Button btn = view.findViewById(R.id.frg_fragment01_btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "FRG01", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

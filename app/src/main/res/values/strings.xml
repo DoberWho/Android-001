@@ -6,4 +6,10 @@
     <string name="title_activity_dialog">Activity no FullScreen</string>
     <string name="notification_label">Notificacion</string>
     <string name="download_label">Descargar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="fragment_02" translatable="false">Fragment 02</string>
+    <string name="act_fragment_frg01" translatable="false">Fragment 01</string>
+    <string name="act_fragment_frg02" translatable="false">Fragment 02</string>
+    <string name="btn_fragment">Fragments</string>
 </resources>
