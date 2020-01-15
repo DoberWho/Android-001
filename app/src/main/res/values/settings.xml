@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="IPSERVIDOR" translatable="false">http://www.google.es</string>
+</resources>
