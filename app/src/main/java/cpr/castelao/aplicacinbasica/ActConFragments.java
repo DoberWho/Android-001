@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import cpr.castelao.aplicacinbasica.ui.fragment01.Fragment01;
 import cpr.castelao.aplicacinbasica.ui.fragment02.Fragment02;
+import cpr.castelao.aplicacinbasica.ui.fragment03.VideoFragment;
 
 public class ActConFragments extends AppCompatActivity {
 
@@ -32,7 +33,7 @@ public class ActConFragments extends AppCompatActivity {
     private void initView() {
         Button btnFrg01 = findViewById(R.id.act_fragments_frg01_btn);
         Button btnFrg02 = findViewById(R.id.act_fragments_frg02_btn);
-
+        Button btnFrg03 = findViewById(R.id.act_fragments_frg03_btn);
 
         btnFrg01.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +48,13 @@ public class ActConFragments extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 doCambiarFrg02();
+            }
+        });
+
+        btnFrg03.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doCambiarFrg03();
             }
         });
     }
@@ -65,6 +73,18 @@ public class ActConFragments extends AppCompatActivity {
 
         FragmentTransaction trans = manager.beginTransaction();
         trans.replace(R.id.contenedor, new Fragment02(),"fragment_02");
+        trans.commitNow();
+    }
+
+    private void doCambiarFrg03() {
+
+        String url = "https://www.sample-videos.com/video123/mp4/240/big_buck_bunny_240p_30mb.mp4";
+        VideoFragment frg = VideoFragment.newInstance(url);
+
+        FragmentManager manager = getSupportFragmentManager();
+
+        FragmentTransaction trans = manager.beginTransaction();
+        trans.replace(R.id.contenedor, frg,"fragment_03");
         trans.commitNow();
     }
 }
