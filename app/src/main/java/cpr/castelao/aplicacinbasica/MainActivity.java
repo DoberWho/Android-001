@@ -31,10 +31,12 @@ import butterknife.OnClick;
 import cpr.castelao.aplicacinbasica.adapter.ListAdapter;
 import cpr.castelao.aplicacinbasica.common.NotifController;
 import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
+import cpr.castelao.aplicacinbasica.model.Episodio;
 import cpr.castelao.aplicacinbasica.model.ListaPokemon;
 import cpr.castelao.aplicacinbasica.model.Persona;
 import cpr.castelao.aplicacinbasica.services.AnimeFLVController;
 import cpr.castelao.aplicacinbasica.services.PokeApiController;
+import cpr.castelao.aplicacinbasica.services.controladoresPaginas.PaginaListener;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -154,7 +156,12 @@ public class MainActivity extends BasicApp {
 
                 AnimeFLVController ctrl = new AnimeFLVController(ctx);
                 try {
-                    ctrl.getEpisodies();
+                    ctrl.getEpisodies(new PaginaListener() {
+                        @Override
+                        public void devolver(List<Episodio> items) {
+
+                        }
+                    });
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
