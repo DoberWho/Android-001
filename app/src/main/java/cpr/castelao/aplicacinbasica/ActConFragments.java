@@ -11,6 +11,7 @@ import android.widget.Button;
 import cpr.castelao.aplicacinbasica.ui.fragment01.Fragment01;
 import cpr.castelao.aplicacinbasica.ui.fragment02.Fragment02;
 import cpr.castelao.aplicacinbasica.ui.fragment03.VideoFragment;
+import cpr.castelao.aplicacinbasica.ui.fragment04.CalendarFragment;
 
 public class ActConFragments extends AppCompatActivity {
 
@@ -34,6 +35,7 @@ public class ActConFragments extends AppCompatActivity {
         Button btnFrg01 = findViewById(R.id.act_fragments_frg01_btn);
         Button btnFrg02 = findViewById(R.id.act_fragments_frg02_btn);
         Button btnFrg03 = findViewById(R.id.act_fragments_frg03_btn);
+        Button btnFrg04 = findViewById(R.id.act_fragments_frg04_btn);
 
         btnFrg01.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +57,13 @@ public class ActConFragments extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 doCambiarFrg03();
+            }
+        });
+
+        btnFrg04.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doCambiarFrg04();
             }
         });
     }
@@ -85,6 +94,14 @@ public class ActConFragments extends AppCompatActivity {
 
         FragmentTransaction trans = manager.beginTransaction();
         trans.replace(R.id.contenedor, frg,"fragment_03");
+        trans.commitNow();
+    }
+
+    private void doCambiarFrg04() {
+        FragmentManager manager = getSupportFragmentManager();
+
+        FragmentTransaction trans = manager.beginTransaction();
+        trans.replace(R.id.contenedor, new CalendarFragment(),"fragment_04");
         trans.commitNow();
     }
 }
