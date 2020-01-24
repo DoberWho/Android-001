@@ -2,26 +2,19 @@ package cpr.castelao.aplicacinbasica.model.realm;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class Menu extends RealmObject {
 
-    @PrimaryKey
-    private long id;
+       private Date created;
 
-    private Date created;
+    private RealmList<Plato> platos;
 
-    private ArrayList<Plato> platos;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public Date getCreated() {
         return created;
@@ -31,11 +24,19 @@ public class Menu extends RealmObject {
         this.created = created;
     }
 
-    public ArrayList<Plato> getPlatos() {
+    public List<Plato> getPlatos() {
         return platos;
     }
 
-    public void setPlatos(ArrayList<Plato> platos) {
+    public void setPlatos(RealmList<Plato> platos) {
         this.platos = platos;
+    }
+
+    public static Menu getDbObject(){
+        Realm realm = RealmController.init().get();
+        realm.beginTransaction();
+        Menu item = realm.createObject(Menu.class);
+        realm.commitTransaction();
+        return item;
     }
 }

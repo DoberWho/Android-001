@@ -37,6 +37,7 @@ import cpr.castelao.aplicacinbasica.model.Persona;
 import cpr.castelao.aplicacinbasica.services.AnimeFLVController;
 import cpr.castelao.aplicacinbasica.services.PokeApiController;
 import cpr.castelao.aplicacinbasica.services.controladoresPaginas.PaginaListener;
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,7 +53,7 @@ public class MainActivity extends BasicApp {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Realm.init(this);
         toast("onCreate");
 
         initButtons();
@@ -117,6 +118,15 @@ public class MainActivity extends BasicApp {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ctx, ActConFragments.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnMenu = findViewById(R.id.act_main_menu_btn);
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ctx, MenuActivity.class);
                 startActivity(intent);
             }
         });
@@ -266,7 +276,6 @@ public class MainActivity extends BasicApp {
     protected void onDestroy() {
         super.onDestroy();
         toast("onDestroy");
-
     }
 
     public void toast(String msg) {

@@ -1,22 +1,12 @@
 package cpr.castelao.aplicacinbasica.model.realm;
 
+import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class TipoAlimento  extends RealmObject {
 
-    @PrimaryKey
-    private long id;
-
     private String nombre;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;
@@ -24,5 +14,22 @@ public class TipoAlimento  extends RealmObject {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public static TipoAlimento getDbObject(){
+        Realm realm = RealmController.init().get();
+        realm.beginTransaction();
+        TipoAlimento item = realm.createObject(TipoAlimento.class);
+        realm.commitTransaction();
+        return item;
+    }
+
+    public static TipoAlimento save(TipoAlimento tipo){
+        Realm realm = RealmController.init().get();
+        realm.beginTransaction();
+        TipoAlimento item = realm.createObject(TipoAlimento.class);
+        item.setNombre(tipo.getNombre());
+        realm.commitTransaction();
+        return item;
     }
 }
