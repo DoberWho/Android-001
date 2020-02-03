@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +55,7 @@ public class MainActivity extends BasicApp {
         Realm.init(this);
         toast("onCreate");
 
+
         initButtons();
         initData();
         initViews();
@@ -97,6 +97,7 @@ public class MainActivity extends BasicApp {
 
 
         Button btnOkhttp = findViewById(R.id.act_main_okhttp_btn);
+
         btnOkhttp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
