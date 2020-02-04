@@ -106,10 +106,19 @@ public class MainActivity extends BasicApp {
         }
 
 
+        View.OnClickListener clickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("MAIN","Hello Darkest, my Old Friend");
+            }
+        };
+        ((Button) findViewById(R.id.act_main_menu_other_btn)).setOnClickListener(clickListener);
+
         WebView web = findViewById(R.id.main_webview);
         web.loadUrl("https://web.whatsapp.com/");
 
         Button btnOkhttp = findViewById(R.id.act_main_okhttp_btn);
+
         btnOkhttp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
