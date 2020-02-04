@@ -4,10 +4,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+  import android.os.Bundle;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;;;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,8 +17,9 @@ import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.format.DateTimeFormatterBuilder;
 import org.threeten.bp.format.SignStyle;
 
-    import static org.threeten.bp.temporal.ChronoField.DAY_OF_MONTH;;;;;
+import static org.threeten.bp.temporal.ChronoField.DAY_OF_MONTH;
 import static org.threeten.bp.temporal.ChronoField.MONTH_OF_YEAR;
+import static org.threeten.bp.temporal.ChronoField.DAY_OF_WEEK;
 import static org.threeten.bp.temporal.ChronoField.YEAR;
 
 import java.io.IOException;
