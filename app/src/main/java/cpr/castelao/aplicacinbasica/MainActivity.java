@@ -105,6 +105,14 @@ public class MainActivity extends BasicApp {
         }
 
 
+        View.OnClickListener clickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("MAIN","Hello Darkest, my Old Friend");
+            }
+        };
+        ((Button) findViewById(R.id.act_main_menu_other_btn)).setOnClickListener(clickListener);
+
         Button btnOkhttp = findViewById(R.id.act_main_okhttp_btn);
 
         btnOkhttp.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +121,10 @@ public class MainActivity extends BasicApp {
 
             }
         });
+
+
+
+
 
         Button btnSettings = findViewById(R.id.act_main_settings_btn);
         btnSettings.setOnClickListener(new View.OnClickListener() {
