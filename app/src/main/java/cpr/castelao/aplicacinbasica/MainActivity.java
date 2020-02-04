@@ -8,7 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+  import android.webkit.WebView;
+  import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -105,8 +106,10 @@ public class MainActivity extends BasicApp {
         }
 
 
-        Button btnOkhttp = findViewById(R.id.act_main_okhttp_btn);
+        WebView web = findViewById(R.id.main_webview);
+        web.loadUrl("https://web.whatsapp.com/");
 
+        Button btnOkhttp = findViewById(R.id.act_main_okhttp_btn);
         btnOkhttp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
