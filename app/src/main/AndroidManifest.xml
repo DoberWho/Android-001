@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".ListCompareActivity"></activity>
+        <activity android:name=".MenuActivity" />
         <activity android:name=".ActConFragments" />
 
         <service

@@ -110,6 +110,8 @@ public class MainActivity extends BasicApp {
             @Override
             public void onClick(View v) {
                 Log.i("MAIN","Hello Darkest, my Old Friend");
+                Intent intent = new Intent(ctx, ListCompareActivity.class);
+                startActivity(intent);
             }
         };
         ((Button) findViewById(R.id.act_main_menu_other_btn)).setOnClickListener(clickListener);
