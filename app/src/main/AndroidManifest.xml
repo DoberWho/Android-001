@@ -16,7 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".ListCompareActivity"></activity>
+        <activity android:name=".ListCompareActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+
+        </activity>
         <activity android:name=".MenuActivity" />
         <activity android:name=".ActConFragments" />
 
