@@ -98,12 +98,13 @@ public class ActConFragments extends AppCompatActivity {
         String text = " Hola, Me llamo Ralph";
 
         //Whatsapp intent.setPackage("com.whatsapp");
-        //Linkedin   intent.setPackage("com.linkedin.android");
+        //Linkedin  intent.setPackage("com.linkedin.android");
         //Twitter intent.setPackage("com.twitter.android");
         //Facebook intent.setPackage("com.facebook.katana");
 
         intent.setPackage("com.whatsapp");
         if (intent != null) {
+            intent.putExtra(Intent.EXTRA_PHONE_NUMBER, "miNumeroDeTelefono");
             intent.putExtra(Intent.EXTRA_TEXT, text);//
             startActivity(Intent.createChooser(intent, text));
         } else {
