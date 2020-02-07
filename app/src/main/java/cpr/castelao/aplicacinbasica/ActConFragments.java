@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import cpr.castelao.aplicacinbasica.ui.fragment01.Fragment01;
 import cpr.castelao.aplicacinbasica.ui.fragment02.Fragment02;
@@ -66,6 +69,53 @@ public class ActConFragments extends AppCompatActivity {
                 doCambiarFrg04();
             }
         });
+
+
+        Button btnFrg05 = findViewById(R.id.act_launch_web_btn);
+        btnFrg05.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goWebsite();
+            }
+        });
+
+        Button btnFrg06 = findViewById(R.id.act_launch_msg_btn);
+        btnFrg06.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendWhastapp();
+            }
+        });
+
+
+    }
+
+    private void sendWhastapp(){
+
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        String text = " Hola, Me llamo Ralph";
+
+        //Whatsapp intent.setPackage("com.whatsapp");
+        //Linkedin   intent.setPackage("com.linkedin.android");
+        //Twitter intent.setPackage("com.twitter.android");
+        //Facebook intent.setPackage("com.facebook.katana");
+
+        intent.setPackage("com.whatsapp");
+        if (intent != null) {
+            intent.putExtra(Intent.EXTRA_TEXT, text);//
+            startActivity(Intent.createChooser(intent, text));
+        } else {
+
+            Toast.makeText(this, "App not found", Toast.LENGTH_SHORT)
+                    .show();
+        }
+    }
+
+    private void goWebsite(){
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://ctbarbanza.com"));
+        startActivity(browserIntent);
     }
 
     private void doCambiarFrg01() {

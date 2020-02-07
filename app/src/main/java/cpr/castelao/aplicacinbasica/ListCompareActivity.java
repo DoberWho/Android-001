@@ -32,7 +32,7 @@ public class ListCompareActivity extends AppCompatActivity {
     private void getItems() {
 
         final List<String> listado = new ArrayList<>();
-
+/*
         final ListAdapter adapter = new ListAdapter(this, listado, listener);
         lista.setAdapter(adapter);
 
@@ -59,7 +59,7 @@ public class ListCompareActivity extends AppCompatActivity {
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         lista.setLayoutManager(mLayoutManager);
-
+//*/
     }
 
     private void initData(){
