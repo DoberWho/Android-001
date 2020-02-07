@@ -32,7 +32,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cpr.castelao.aplicacinbasica.adapter.ListAdapter;
 import cpr.castelao.aplicacinbasica.common.NotifController;
-import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
+  import cpr.castelao.aplicacinbasica.controller.PersonaController;
+  import cpr.castelao.aplicacinbasica.listeners.ListAdapterListener;
 import cpr.castelao.aplicacinbasica.model.Episodio;
 import cpr.castelao.aplicacinbasica.model.ListaPokemon;
 import cpr.castelao.aplicacinbasica.model.Persona;
@@ -248,6 +249,9 @@ public class MainActivity extends BasicApp {
         };
 
         ListAdapter adapter = new ListAdapter(this, listado, listener);
+
+
+
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         // LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
